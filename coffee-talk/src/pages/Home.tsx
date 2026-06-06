@@ -2,15 +2,6 @@ import { useState } from "react"
 import { coffees, type Coffee } from "../lib/api"
 import { CoffeeCard } from "../components/CoffeeCard"
 
-
-type Coffee = {
-  id: number
-  name: string
-  price: number
-  image: string
-  description: string
-}
-
 export function Home() {
   const [favorites, setFavorites] = useState<Coffee[]>(() => {
     return JSON.parse(localStorage.getItem("favorites") || "[]")

@@ -1,25 +1,40 @@
-import { Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 
 export function Header() {
   return (
     <header>
       <div className="header-content">
-        <Link to="/" className="logo">
+        <NavLink to="/" className="logo">
           ☕ Coffee Talk
-        </Link>
+        </NavLink>
 
         <nav>
-          <Link to="/" className="nav-btn active">
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              `nav-btn ${isActive ? "active" : ""}`
+            }
+          >
             Home
-          </Link>
+          </NavLink>
 
-          <Link to="/cart" className="nav-btn">
+          <NavLink
+            to="/cart"
+            className={({ isActive }) =>
+              `nav-btn ${isActive ? "active" : ""}`
+            }
+          >
             Carrinho
-          </Link>
+          </NavLink>
 
-          <Link to="/favorites" className="nav-btn">
+          <NavLink
+            to="/favorites"
+            className={({ isActive }) =>
+              `nav-btn ${isActive ? "active" : ""}`
+            }
+          >
             Favoritos
-          </Link>
+          </NavLink>
         </nav>
       </div>
     </header>

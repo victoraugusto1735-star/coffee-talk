@@ -1,5 +1,7 @@
-import { coffees } from "../lib/api"
+import { useState } from "react"
+import { coffees, type Coffee } from "../lib/api"
 import { CoffeeCard } from "../components/CoffeeCard"
+
 
 type Coffee = {
   id: number
@@ -10,18 +12,19 @@ type Coffee = {
 }
 
 export function Home() {
+  const [favorites, setFavorites] = useState<Coffee[]>(() => {
+    return JSON.parse(localStorage.getItem("favorites") || "[]")
+  })
+
   function addToFavorites(coffee: Coffee) {
-    const favorites = JSON.parse(localStorage.getItem("favorites") || "[]")
+    const exists = favorites.some((item) => item.id === coffee.id)
 
-    const exists = favorites.some((item: Coffee) => item.id === coffee.id)
+    const updatedFavorites = exists
+      ? favorites.filter((item) => item.id !== coffee.id)
+      : [...favorites, coffee]
 
-    if (!exists) {
-      favorites.push(coffee)
-      localStorage.setItem("favorites", JSON.stringify(favorites))
-      alert(`${coffee.name} foi para favoritos ❤️`)
-    } else {
-      alert(`${coffee.name} já está nos favoritos`)
-    }
+    setFavorites(updatedFavorites)
+    localStorage.setItem("favorites", JSON.stringify(updatedFavorites))
   }
 
   function addToCart(coffee: Coffee) {
@@ -66,6 +69,7 @@ export function Home() {
           <CoffeeCard
             key={coffee.id}
             coffee={coffee}
+            isFavorite={favorites.some((item) => item.id === coffee.id)}
             onFavorite={addToFavorites}
             onCart={addToCart}
           />

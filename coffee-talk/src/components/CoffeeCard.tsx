@@ -1,27 +1,20 @@
+
 import { formatPrice } from "../lib/formatPrice"
-
-type Coffee = {
-  id: number
-  name: string
-  price: number
-  image: string
-  description: string
-}
-
+import type { Coffee } from "../lib/api"
 type Props = {
-  coffee: Coffee
-  onFavorite: (coffee: Coffee) => void
-  onCart: (coffee: Coffee) => void
-}
-
-export function CoffeeCard({ coffee, onFavorite, onCart }: Props) {
+  coffee: Coffee;
+  isFavorite: boolean;
+  onFavorite: (coffee: Coffee) => void;
+  onCart: (coffee: Coffee) => void;
+};
+export function CoffeeCard({ coffee, isFavorite, onFavorite, onCart }: Props) {
   return (
     <div className="coffee-card">
       <div className="image-container">
         <img src={coffee.image} alt={coffee.name} className="coffee-image" />
 
         <button className="favorite-btn" onClick={() => onFavorite(coffee)}>
-          ♡
+          {isFavorite ? "❤️" : "🤍"}
         </button>
       </div>
 
@@ -43,5 +36,5 @@ export function CoffeeCard({ coffee, onFavorite, onCart }: Props) {
         </div>
       </div>
     </div>
-  )
+  );
 }

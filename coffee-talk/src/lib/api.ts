@@ -1,4 +1,12 @@
-export const coffees = [
+export type Coffee = {
+  id: number
+  name: string
+  price: number
+  image: string
+  description: string
+}
+
+export const coffees: Coffee[] = [
   {
     id: 1,
     name: "Cappuccino",

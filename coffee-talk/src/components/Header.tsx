@@ -1,6 +1,14 @@
 import { NavLink } from "react-router-dom"
 
-export function Header() {
+type Props = {
+  cartCount: number
+}
+
+export function Header({ cartCount }: Props) {
+  function toggleTheme() {
+    document.body.classList.toggle("dark")
+  }
+
   return (
     <header>
       <div className="header-content">
@@ -24,7 +32,7 @@ export function Header() {
               `nav-btn ${isActive ? "active" : ""}`
             }
           >
-            Carrinho
+            Carrinho ({cartCount})
           </NavLink>
 
           <NavLink
@@ -35,6 +43,10 @@ export function Header() {
           >
             Favoritos
           </NavLink>
+
+          <button className="nav-btn" onClick={toggleTheme}>
+            🌙
+          </button>
         </nav>
       </div>
     </header>

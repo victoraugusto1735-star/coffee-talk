@@ -1,51 +1,34 @@
 import { useEffect, useState } from "react"
 import { formatPrice } from "../lib/formatPrice"
+import type { Coffee } from "../lib/api"
 
-type Coffee = {
-  id: number
-  name: string
-  price: number
-  image: string
-  description: string
+type Props = {
+  onCartUpdate: () => void
 }
 
-export function Cart() {
+export function Cart({ onCartUpdate }: Props) {
   const [cart, setCart] = useState<Coffee[]>([])
 
   useEffect(() => {
-    const savedCart = JSON.parse(
-      localStorage.getItem("cart") || "[]"
-    )
-
+    const savedCart = JSON.parse(localStorage.getItem("cart") || "[]")
     setCart(savedCart)
   }, [])
 
   function removeCart(id: number) {
-    const newCart = cart.filter(
-      (coffee) => coffee.id !== id
-    )
+    const newCart = cart.filter((coffee) => coffee.id !== id)
 
     setCart(newCart)
-
-    localStorage.setItem(
-      "cart",
-      JSON.stringify(newCart)
-    )
+    localStorage.setItem("cart", JSON.stringify(newCart))
+    onCartUpdate()
   }
 
-  const total = cart.reduce(
-    (sum, coffee) => sum + coffee.price,
-    0
-  )
+  const total = cart.reduce((sum, coffee) => sum + coffee.price, 0)
 
   return (
     <main className="app-container">
       <section className="section-title">
         <h2>Meu Carrinho 🛒</h2>
-
-        <p>
-          Cafés adicionados ao carrinho.
-        </p>
+        <p>Cafés adicionados ao carrinho.</p>
       </section>
 
       {cart.length === 0 ? (
@@ -54,10 +37,7 @@ export function Cart() {
         <>
           <section className="coffee-grid">
             {cart.map((coffee) => (
-              <div
-                className="coffee-card"
-                key={coffee.id}
-              >
+              <div className="coffee-card" key={coffee.id}>
                 <img
                   src={coffee.image}
                   alt={coffee.name}
@@ -67,19 +47,13 @@ export function Cart() {
                 <div className="card-content">
                   <h2>{coffee.name}</h2>
 
-                  <p className="description">
-                    {coffee.description}
-                  </p>
+                  <p className="description">{coffee.description}</p>
 
-                  <p className="price">
-                    {formatPrice(coffee.price)}
-                  </p>
+                  <p className="price">{formatPrice(coffee.price)}</p>
 
                   <button
                     className="btn-secondary"
-                    onClick={() =>
-                      removeCart(coffee.id)
-                    }
+                    onClick={() => removeCart(coffee.id)}
                   >
                     Remover
                   </button>
@@ -88,13 +62,7 @@ export function Cart() {
             ))}
           </section>
 
-          <div
-            style={{
-              marginTop: "30px",
-              fontSize: "24px",
-              fontWeight: "bold",
-            }}
-          >
+          <div className="cart-total">
             Total: {formatPrice(total)}
           </div>
         </>

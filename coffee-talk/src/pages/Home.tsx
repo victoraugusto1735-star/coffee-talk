@@ -2,7 +2,13 @@ import { useState } from "react"
 import { coffees, type Coffee } from "../lib/api"
 import { CoffeeCard } from "../components/CoffeeCard"
 
-export function Home() {
+type Props = {
+  onCartUpdate: () => void
+}
+
+export function Home({ onCartUpdate }: Props) {
+  const [toast, setToast] = useState("")
+
   const [favorites, setFavorites] = useState<Coffee[]>(() => {
     return JSON.parse(localStorage.getItem("favorites") || "[]")
   })
@@ -25,11 +31,24 @@ export function Home() {
 
     localStorage.setItem("cart", JSON.stringify(cart))
 
-    alert(`${coffee.name} foi para o carrinho 🛒`)
+    onCartUpdate()
+
+    setToast(`${coffee.name} foi para o carrinho`)
+
+    setTimeout(() => {
+      setToast("")
+    }, 2500)
   }
 
   return (
     <main className="app-container">
+      {toast && (
+        <div className="coffee-toast">
+          <span>☕</span>
+          <p>{toast}</p>
+        </div>
+      )}
+
       <section className="hero">
         <div className="hero-text">
           <span className="mini-title">BEM-VINDO À COFFEE TALK</span>

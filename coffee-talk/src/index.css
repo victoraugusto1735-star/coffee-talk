@@ -373,3 +373,416 @@ footer {
     flex-direction: column;
   }
 }
+/* LOGIN */
+
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background:
+    linear-gradient(rgba(47, 20, 9, 0.75), rgba(47, 20, 9, 0.75)),
+    url("/img/banner.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  background: rgba(255, 255, 255, 0.94);
+  padding: 42px;
+  border-radius: 28px;
+  text-align: center;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3);
+}
+
+.login-card h1 {
+  font-size: 42px;
+  color: #2f1409;
+}
+
+.login-card p {
+  margin: 16px 0 28px;
+  color: #6d4a34;
+  font-size: 18px;
+}
+
+.login-card button {
+  border: 0;
+  background: #8b4513;
+  color: white;
+  padding: 15px 24px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+/* DETAILS */
+
+.details-page {
+  min-height: 75vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 52px;
+  align-items: center;
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+
+.details-page img {
+  width: 100%;
+  height: 460px;
+  object-fit: cover;
+  border-radius: 32px;
+  box-shadow: 0 24px 55px rgba(47, 20, 9, 0.22);
+}
+
+.details-page div {
+  background: rgba(255, 255, 255, 0.7);
+  padding: 38px;
+  border-radius: 28px;
+  border: 1px solid rgba(139, 69, 19, 0.12);
+  box-shadow: 0 18px 40px rgba(47, 20, 9, 0.08);
+}
+
+.details-page h1 {
+  margin-top: 14px;
+  font-size: clamp(38px, 5vw, 56px);
+  line-height: 1;
+  color: #2f1409;
+}
+
+.details-page p {
+  margin-top: 18px;
+  font-size: 19px;
+  color: #6d4a34;
+  line-height: 1.7;
+}
+
+.details-page strong {
+  display: block;
+  margin-top: 24px;
+  font-size: 36px;
+  color: #8b4513;
+}
+
+.stars {
+  margin-top: 16px;
+  font-size: 20px;
+}
+
+/* DARK MODE */
+
+body.dark {
+  background:
+    radial-gradient(circle at top left, rgba(184, 91, 29, 0.25), transparent 35%),
+    linear-gradient(135deg, #160904, #2f1409);
+  color: #fff7ef;
+}
+
+body.dark .coffee-card,
+body.dark .login-card,
+body.dark .details-page div {
+  background: rgba(47, 20, 9, 0.9);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+body.dark .card-content h2,
+body.dark .login-card h1,
+body.dark .details-page h1 {
+  color: #fff7ef;
+}
+
+body.dark .description,
+body.dark .section-title p,
+body.dark .details-page p,
+body.dark .login-card p {
+  color: #f4d8bf;
+}
+
+body.dark .btn-secondary {
+  background: transparent;
+  color: #ffc28c;
+  border-color: #ffc28c;
+}
+
+/* EMPTY PAGE */
+
+.page-empty {
+  min-height: 60vh;
+  padding-top: 70px;
+}
+
+/* RESPONSIVO DETALHES */
+
+@media (max-width: 700px) {
+  .details-page {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding-top: 42px;
+    padding-bottom: 42px;
+  }
+
+  .details-page img {
+    height: 320px;
+  }
+
+  .details-page div {
+    padding: 28px;
+  }
+
+  .details-page h1 {
+    font-size: 38px;
+  }
+}
+/* LOGIN PREMIUM */
+
+.login-page {
+  position: relative;
+
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 24px;
+
+  background:
+    url("/img/banner.png");
+
+  background-size: cover;
+  background-position: center;
+}
+
+.login-overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(15, 8, 4, 0.85),
+      rgba(47, 20, 9, 0.75)
+    );
+}
+
+.login-card {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 480px;
+
+  padding: 50px;
+
+  text-align: center;
+
+  border-radius: 32px;
+
+  background: rgba(255, 255, 255, 0.08);
+
+  backdrop-filter: blur(20px);
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+.login-logo {
+  width: 90px;
+  height: 90px;
+
+  margin: 0 auto 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 42px;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      135deg,
+      #d97a32,
+      #8b4513
+    );
+
+  box-shadow:
+    0 12px 30px rgba(217, 122, 50, 0.4);
+}
+
+.login-tag {
+  color: #ffc28c;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.login-card h1 {
+  margin-top: 18px;
+
+  color: white;
+
+  font-size: 56px;
+  font-weight: 800;
+}
+
+.login-card p {
+  margin-top: 18px;
+
+  color: rgba(255,255,255,0.85);
+
+  line-height: 1.7;
+
+  font-size: 18px;
+}
+
+.login-card button {
+  width: 100%;
+
+  margin-top: 32px;
+
+  border: 0;
+
+  padding: 18px;
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #d97a32,
+      #8b4513
+    );
+
+  color: white;
+
+  font-size: 17px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.login-card button:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 14px 30px rgba(217, 122, 50, 0.4);
+}
+
+.login-card small {
+  display: block;
+
+  margin-top: 20px;
+
+  color: rgba(255,255,255,0.55);
+}
+.coffee-toast {
+  position: fixed;
+  top: 96px;
+  right: 28px;
+  z-index: 999;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 16px 22px;
+  border-radius: 18px;
+
+  background: rgba(47, 20, 9, 0.96);
+  color: #fff7ef;
+
+  box-shadow: 0 18px 40px rgba(47, 20, 9, 0.32);
+
+  animation: toastCoffee 0.4s ease;
+}
+
+.coffee-toast span {
+  font-size: 28px;
+  animation: coffeeBounce 0.8s ease infinite;
+}
+
+.coffee-toast p {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+@keyframes toastCoffee {
+  from {
+    opacity: 0;
+    transform: translateX(40px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes coffeeBounce {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+
+  50% {
+    transform: translateY(-5px) rotate(-8deg);
+  }
+}
+.coffee-info {
+  margin-top: 24px;
+}
+
+.coffee-info h3 {
+  margin-top: 18px;
+  color: #8b4513;
+  font-size: 18px;
+}
+
+.coffee-info p {
+  margin-top: 6px;
+  font-size: 16px;
+}
+
+.buy-details-btn {
+  margin-top: 24px;
+
+  border: none;
+
+  background: linear-gradient(
+    135deg,
+    #c86a25,
+    #8b4513
+  );
+
+  color: white;
+
+  padding: 16px 24px;
+
+  border-radius: 14px;
+
+  font-size: 17px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.buy-details-btn:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 12px 25px
+    rgba(200, 106, 37, 0.35);
+}

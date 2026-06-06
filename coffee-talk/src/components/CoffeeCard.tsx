@@ -1,12 +1,14 @@
-
+import { Link } from "react-router-dom"
 import { formatPrice } from "../lib/formatPrice"
 import type { Coffee } from "../lib/api"
+
 type Props = {
-  coffee: Coffee;
-  isFavorite: boolean;
-  onFavorite: (coffee: Coffee) => void;
-  onCart: (coffee: Coffee) => void;
-};
+  coffee: Coffee
+  isFavorite: boolean
+  onFavorite: (coffee: Coffee) => void
+  onCart: (coffee: Coffee) => void
+}
+
 export function CoffeeCard({ coffee, isFavorite, onFavorite, onCart }: Props) {
   return (
     <div className="coffee-card">
@@ -23,6 +25,8 @@ export function CoffeeCard({ coffee, isFavorite, onFavorite, onCart }: Props) {
 
         <p className="description">{coffee.description}</p>
 
+        <p className="stars">⭐⭐⭐⭐⭐</p>
+
         <p className="price">{formatPrice(coffee.price)}</p>
 
         <div className="actions">
@@ -30,11 +34,11 @@ export function CoffeeCard({ coffee, isFavorite, onFavorite, onCart }: Props) {
             Comprar
           </button>
 
-          <button className="btn-secondary" onClick={() => onFavorite(coffee)}>
-            Favoritar
-          </button>
+          <Link to={`/coffee/${coffee.id}`} className="btn-secondary">
+            Ver detalhes
+          </Link>
         </div>
       </div>
     </div>
-  );
+  )
 }
